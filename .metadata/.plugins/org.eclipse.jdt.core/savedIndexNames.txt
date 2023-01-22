@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+D:\Binus Class\Semester 3\Object Oriented Programming\Final Project\.metadata\.plugins\org.eclipse.jdt.core
+245651609.index
+847330044.index
+1195317033.index
+1987592592.index
+1865797976.index
