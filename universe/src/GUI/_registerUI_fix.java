@@ -7,6 +7,7 @@ import javax.swing.DefaultSingleSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -96,11 +97,19 @@ public class _registerUI_fix extends JFrame {
 		for (int i = 0; i < 5; i++)
 			System.out.println(row[i]);
 		
-		connection.addDatatoServer(sqlQuerry, row.length, row); // Update to db
-		dispose();
-		_homeUI_fix frame = new _homeUI_fix();
-		frame.setVisible(true);
-		designControl.setFrametoCenterOfScreen(frame);
+		boolean isExist = connection.checkUsername((String) row[1]);
+		
+		if(isExist) {
+			JOptionPane.showMessageDialog(null, "Username already exist!");
+		}
+		else {
+			connection.addDatatoServer(sqlQuerry, row.length, row); // Update to db
+			dispose();
+			_homeUI_fix frame = new _homeUI_fix();
+			frame.setVisible(true);
+			designControl.setFrametoCenterOfScreen(frame);			
+		}
+		
 	}
 	
 	void init() {

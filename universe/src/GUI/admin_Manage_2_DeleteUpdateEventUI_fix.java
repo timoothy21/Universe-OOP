@@ -51,6 +51,7 @@ public class admin_Manage_2_DeleteUpdateEventUI_fix extends JFrame {
 	static Admin admins;
 	String selectedIdEvent;
 	sqlConnector connection = new sqlConnector();
+	static String[] result;
 
 	/**
 	 * Launch the application.

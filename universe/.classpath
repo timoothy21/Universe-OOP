@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/62822/OneDrive - Bina Nusantara/Kuliah BINUS/SEMESTER 3/3. Object Oriented Programming/0. Teori/3. Final Project/universe-workspace-final/universe-test/lib/mysql-connector.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/mysql-connector.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Binus Class/Semester 3/Object Oriented Programming/Final Project/universe/lib/mysql-connector.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

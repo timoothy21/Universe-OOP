@@ -42,6 +42,43 @@ public class sqlConnector {
 		}
 	}
 	
+	
+//	check account
+    public boolean checkUsername(String username) {
+        openConnection();
+    	boolean exists = false;
+        try {
+        	preparedStatement = con.prepareStatement("SELECT username FROM account WHERE username = ?");
+        			
+            preparedStatement.setString(1, username);
+            try (ResultSet rs = (ResultSet) preparedStatement.executeQuery()) {
+                exists = rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+    
+//    check enroll
+    public boolean checkEnrolledEvent(Integer idAccount, Integer idEvent) {
+        openConnection();
+    	boolean exists = false;
+        try {
+        	preparedStatement = con.prepareStatement("SELECT * FROM enrolledevent WHERE id_account = ? AND id_event = ?");
+        	
+        	preparedStatement.setInt(1, idAccount);
+            preparedStatement.setInt(2, idEvent);
+            try (ResultSet rs = (ResultSet) preparedStatement.executeQuery()) {
+                exists = rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+	
+	
 //	
 	// Add Data
 	public void addDatatoServer(String querry, int countValue, Object[] values) {
@@ -84,7 +121,7 @@ public class sqlConnector {
             
             preparedStatement.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "New User Successfully Added!");
+            JOptionPane.showMessageDialog(null, "New Event Successfully Added!");
             
         } catch (Exception e2) {
             JOptionPane.showMessageDialog(null, "Something's wrong!", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -167,6 +204,7 @@ public class sqlConnector {
 	          JOptionPane.showMessageDialog(null, "Cannot Delete!\nSomething's wrong!", "Error!", JOptionPane.ERROR_MESSAGE);
 	      }
 	  }
+	
 //	
 //	// Remove Data
 //
@@ -282,44 +320,44 @@ public class sqlConnector {
 		return null;
 	}
 	
-	public void showTableData2(JTable table, DefaultTableModel model, String Harga) {
-		sqlConnector connection = new sqlConnector();
-		model.getDataVector().removeAllElements();
-		model.fireTableDataChanged();
-		try {
-			connection.openConnection();
-			java.sql.Statement statement = connection.con.createStatement();
-			String querrySQL = "SELECT * FROM event WHERE fee LIKE '%"+Harga+"%'";
-			ResultSet rs = (ResultSet) statement.executeQuery(querrySQL);
-			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-			model = (DefaultTableModel) table.getModel();
-			int cols = rsmd.getColumnCount();
-			String[] colName = new String[cols];
-			
-			for(int i=0 ;i<cols;i++) {
-				colName[i] = rsmd.getColumnName(i+1);
-				model.setColumnIdentifiers(colName);
-				String[] row = new String[cols];
-				while(rs.next()) {
-					for(int j = 1; j <= cols; j++) {
-						String typeData = rs.getMetaData().getColumnTypeName(j);
-						if(typeData.equals("INT")) {
-							row[j-1] = String.valueOf(rs.getInt(j));
-						} else if(typeData.equals("VARCHAR")) {
-							row[j-1] = rs.getString(j);
-						}
-					}
-					model.addRow(row);
-				}
-			}
-			statement.close();
-			connection.closeConnection();
-//			return data;
-		}catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Failed to get User data!!", "Error!", JOptionPane.ERROR_MESSAGE);
-		}
-//		return null;
-	}
+//	public void showTableData2(JTable table, DefaultTableModel model, String Harga) {
+//		sqlConnector connection = new sqlConnector();
+//		model.getDataVector().removeAllElements();
+//		model.fireTableDataChanged();
+//		try {
+//			connection.openConnection();
+//			java.sql.Statement statement = connection.con.createStatement();
+//			String querrySQL = "SELECT * FROM event WHERE fee LIKE '%"+Harga+"%'";
+//			ResultSet rs = (ResultSet) statement.executeQuery(querrySQL);
+//			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+//			model = (DefaultTableModel) table.getModel();
+//			int cols = rsmd.getColumnCount();
+//			String[] colName = new String[cols];
+//			
+//			for(int i=0 ;i<cols;i++) {
+//				colName[i] = rsmd.getColumnName(i+1);
+//				model.setColumnIdentifiers(colName);
+//				String[] row = new String[cols];
+//				while(rs.next()) {
+//					for(int j = 1; j <= cols; j++) {
+//						String typeData = rs.getMetaData().getColumnTypeName(j);
+//						if(typeData.equals("INT")) {
+//							row[j-1] = String.valueOf(rs.getInt(j));
+//						} else if(typeData.equals("VARCHAR")) {
+//							row[j-1] = rs.getString(j);
+//						}
+//					}
+//					model.addRow(row);
+//				}
+//			}
+//			statement.close();
+//			connection.closeConnection();
+////			return data;
+//		}catch (Exception e) {
+//			JOptionPane.showMessageDialog(null, "Failed to get User data!!", "Error!", JOptionPane.ERROR_MESSAGE);
+//		}
+////		return null;
+//	}
 	
 	public DefaultTableModel showTableData3(JTable table, DefaultTableModel model, String Harga, String Category) {
 		sqlConnector connection = new sqlConnector();

@@ -13,9 +13,11 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\Binus Class\Semester 3\Object Oriented Programming\Final Project\universe"/>
 			<item value="D:\Binus Class\Semester 3\Object Oriented Programming\Final Project\universe-fix"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="D:\Binus Class\Semester 3\Object Oriented Programming\Final Project\universe-fix"/>
 			<item value=""/>
 		</list>
 	</section>

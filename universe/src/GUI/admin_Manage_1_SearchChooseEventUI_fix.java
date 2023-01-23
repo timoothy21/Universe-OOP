@@ -114,17 +114,6 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		lbl_judul.setBounds(226, 11, 126, 25);
 		panel_2.add(lbl_judul);
 		
-		// belum jalan
-//		JRadioButton btnreset = new JRadioButton("Reset");
-//		btnreset.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-////				model.setRowCount(0);
-////				connection.showTableData(table);
-//				connection.showTableReset(table, model);
-//				model = connection.showTableData(table);
-//			}
-//		});
-		
 		JRadioButton btnreset = new JRadioButton("Reset");
 		btnreset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,7 +143,7 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		btnfree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				harga = "Free";	
-				connection.showTableData2(table, model, harga);
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 			}
 		});
@@ -168,7 +157,7 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		btnpaid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				harga = "Rp";	
-				connection.showTableData2(table, model, harga);
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 			}
 		});
@@ -208,10 +197,11 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		lbl_event_category.setBackground(Color.BLACK);
 		panel_5_1.add(lbl_event_category);
 		
-		JRadioButton btnpendidikan = new JRadioButton("Pendidikan");
+		JRadioButton btnpendidikan = new JRadioButton("Education");
 		btnpendidikan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Education";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
@@ -222,10 +212,11 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		panel_4.add(btnpendidikan);
 		buttonGroupEvent.add(btnpendidikan);
 		
-		JRadioButton btnTeknologi = new JRadioButton("Teknologi");
+		JRadioButton btnTeknologi = new JRadioButton("Technology");
 		btnTeknologi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Technology";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
@@ -236,10 +227,11 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		panel_4.add(btnTeknologi);
 		buttonGroupEvent.add(btnTeknologi);
 		
-		JRadioButton btnEkonomi = new JRadioButton("Ekonomi");
+		JRadioButton btnEkonomi = new JRadioButton("Economic");
 		btnEkonomi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Economic";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
@@ -250,10 +242,11 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		panel_4.add(btnEkonomi);
 		buttonGroupEvent.add(btnEkonomi);
 		
-		JRadioButton btnSosial = new JRadioButton("Sosial");
+		JRadioButton btnSosial = new JRadioButton("Social");
 		btnSosial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Social";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
@@ -264,10 +257,11 @@ public class admin_Manage_1_SearchChooseEventUI_fix extends JFrame {
 		panel_4.add(btnSosial);
 		buttonGroupEvent.add(btnSosial);
 		
-		JRadioButton btnInvestasi = new JRadioButton("Investasi");
+		JRadioButton btnInvestasi = new JRadioButton("Investation");
 		btnInvestasi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Investation";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}

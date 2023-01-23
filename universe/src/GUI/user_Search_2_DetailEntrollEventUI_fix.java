@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import java.awt.Canvas;
 import java.awt.Checkbox;
 import javax.swing.JMenu;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBoxMenuItem;
 import java.awt.SystemColor;
 import java.awt.Color;
@@ -126,28 +127,39 @@ public class user_Search_2_DetailEntrollEventUI_fix extends JFrame {
 		btn_enroll.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
 				connection.openConnection();
-				System.out.println( users.getID() + " || " + result[1]);
-				String sqlQuerry = "INSERT INTO enrolledevent(id_account, id_event) VALUES (?, ?)";
+				
 				Object[] row = {
 						users.getID(),
 						Integer.parseInt(result[1])
 				};
 				
-				connection.addDatatoServerEnroll(sqlQuerry, row.length, row); // Update to db
+				boolean isExist = connection.checkEnrolledEvent(users.getID(), (Integer) row[1]);
 				
-        		
-        		String querrySQL = "UPDATE event SET "
-        				+ "quota = ? WHERE id_event = ?";
+				if(isExist) {
+					JOptionPane.showMessageDialog(null, "Event already enrolled!");
+				}
+				else {
+					System.out.println( users.getID() + " || " + result[1]);
+					
+					String sqlQuerry = "INSERT INTO enrolledevent(id_account, id_event) VALUES (?, ?)";
+					
+					connection.addDatatoServerEnroll(sqlQuerry, row.length, row); // Update to db
+					
+					
+					String querrySQL = "UPDATE event SET "
+							+ "quota = ? WHERE id_event = ?";
 //        		
-        		int updateQuota = Integer.parseInt(result[4]) + 1;
-        		
-        		connection.updateEvent2(querrySQL, 1, updateQuota, row[1]);
-        		
-        		user_0_DashboardUI_fix frame = new user_0_DashboardUI_fix(users);
+					int updateQuota = Integer.parseInt(result[4]) + 1;
+					
+					connection.updateEvent2(querrySQL, 1, updateQuota, row[1]);
+					
+					user_0_DashboardUI_fix frame = new user_0_DashboardUI_fix(users);
 //				user_Search_1_SelectEventUI_fix frame = new user_Search_1_SelectEventUI_fix(users);
-        		frame.setVisible(true);
-        		designControl.setFrametoCenterOfScreen(frame);
-        		dispose();
+					frame.setVisible(true);
+					designControl.setFrametoCenterOfScreen(frame);
+					dispose();					
+				}
+				
         	}
         });
         

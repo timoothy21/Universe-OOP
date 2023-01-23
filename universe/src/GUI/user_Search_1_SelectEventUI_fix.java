@@ -122,7 +122,7 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnfree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				harga = "Free";	
-				connection.showTableData2(table, model, harga);
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 			}
 		});
@@ -137,7 +137,7 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnpaid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				harga = "Rp";	
-				connection.showTableData2(table, model, harga);
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 			}
 		});
@@ -190,7 +190,7 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		lbl_event_category.setBackground(Color.BLACK);
 		panel_5_1.add(lbl_event_category);
 		
-		JRadioButton btnpendidikan = new JRadioButton("Pendidikan");
+		JRadioButton btnpendidikan = new JRadioButton("Education");
 		btnpendidikan.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnpendidikan.setBackground(new Color(249, 247, 247));
 		btnpendidikan.setBounds(6, 37, 100, 23);
@@ -200,12 +200,14 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnpendidikan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Education";
+				connection.showTableData3(table, model, harga, category);
+//				connection.showTableData(table, model, category);
 				Filter(category);
 				System.out.println(category);
 			}
 		});
 		
-		JRadioButton btnTeknologi = new JRadioButton("Teknologi");
+		JRadioButton btnTeknologi = new JRadioButton("Technology");
 		btnTeknologi.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnTeknologi.setBackground(new Color(249, 247, 247));
 		btnTeknologi.setBounds(6, 64, 100, 23);
@@ -215,12 +217,13 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnTeknologi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Technology";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
 		});
 		
-		JRadioButton btnEkonomi = new JRadioButton("Ekonomi");
+		JRadioButton btnEkonomi = new JRadioButton("Economic");
 		btnEkonomi.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnEkonomi.setBackground(new Color(249, 247, 247));
 		btnEkonomi.setBounds(6, 90, 100, 23);
@@ -230,12 +233,13 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnEkonomi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Economic";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
 		});
 		
-		JRadioButton btnSosial = new JRadioButton("Sosial");
+		JRadioButton btnSosial = new JRadioButton("Social");
 		btnSosial.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnSosial.setBackground(new Color(249, 247, 247));
 		btnSosial.setBounds(6, 116, 100, 23);
@@ -245,12 +249,13 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnSosial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Social";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
 		});
 		
-		JRadioButton btnInvestasi = new JRadioButton("Investasi");
+		JRadioButton btnInvestasi = new JRadioButton("Investation");
 		btnInvestasi.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnInvestasi.setBackground(new Color(249, 247, 247));
 		btnInvestasi.setBounds(6, 143, 100, 23);
@@ -260,6 +265,7 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnInvestasi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				category = "Investation";
+				connection.showTableData3(table, model, harga, category);
 				Filter(category);
 				System.out.println(category);
 			}
@@ -317,7 +323,7 @@ public class user_Search_1_SelectEventUI_fix extends JFrame {
 		btnSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int i = table.getSelectedRow();
-	
+				
 				String[] result = new String[model.getColumnCount()];
 				for(int j = 0; j < model.getColumnCount(); j++) {
 					result[j] = (String) table.getModel().getValueAt(i, j);
